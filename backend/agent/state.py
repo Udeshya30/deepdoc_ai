@@ -1,0 +1,14 @@
+from typing import Annotated, TypedDict
+
+from langchain_core.messages import BaseMessage
+from langgraph.graph.message import add_messages
+
+
+class AgentState(TypedDict):
+    messages: Annotated[list[BaseMessage], add_messages]
+    file_id: str
+    intent: str
+    context: str
+    answer: str
+    # Conversation history passed from the frontend [{"role": "user"|"ai", "text": str}]
+    history: list[dict]
